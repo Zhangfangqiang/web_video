@@ -1,0 +1,614 @@
+/* 字体图标 */
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+/* Variables  变量*/
+@import 'variables';
+
+/* Bootstrap */
+@import '~bootstrap/scss/bootstrap';
+
+/* 普遍样式 */
+body {
+  font-family: Helvetica, "Microsoft YaHei", Arial, sans-serif;
+  font-size: 14px;
+}
+
+/*
+ *对bootstrap 进行覆盖开始
+ */
+@media (min-width: 1200px) {
+  .container, .container-sm, .container-md, .container-lg, .container-xl {
+    max-width: 1200px;
+  }
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.container {
+  width: 100%;
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*
+ *对bootstrap 进行覆盖结束
+ */
+
+/*
+ *公共样式开始
+ */
+.iconfont {
+  vertical-align: middle
+}
+
+.fs-14 {
+  font-size: 14px !important;
+}
+
+.fs-22 {
+  font-size: 22px !important;
+}
+
+.zfpr-8 {
+  padding-right: 8px !important;
+}
+
+.zfpl-8 {
+  padding-left: 8px !important;
+}
+
+.zfpr-5 {
+  padding-right: 5px !important;
+
+}
+
+.zfpl-5 {
+  padding-left: 5px !important;
+
+}
+
+.next-title {
+  border-left: 3px solid #ff4141;
+  padding-left: 10px;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.list-none{
+  list-style: none;
+}
+
+.next-list {
+  li {
+
+    a:hover .mt-0{
+      color: #ff4141;
+    }
+    list-style: none;
+
+    img {
+      width: 146px;
+      height: 83px;
+    }
+
+    h5 {
+      line-height: 20px;
+      font-size: 15px;
+      width: 100%;
+      height: 40px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2
+    }
+
+    .next-list-info {
+      font-size: 13px;
+    }
+  }
+}
+
+
+.col-percent-10 {
+  -ms-flex: 0 0 10%;
+  flex: 0 0 10%;
+  max-width: 10%;
+}
+
+.col-percent-20 {
+  -ms-flex: 0 0 20%;
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+
+.col-percent-25 {
+  -ms-flex: 0 0 25%;
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.col-percent-30 {
+  -ms-flex: 0 0 30%;
+  flex: 0 0 30%;
+  max-width: 30%;
+}
+
+.col-percent-40 {
+  -ms-flex: 0 0 40%;
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
+.col-percent-50 {
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col-percent-60 {
+  -ms-flex: 0 0 60%;
+  flex: 0 0 60%;
+  max-width: 60%;
+}
+
+.col-percent-70 {
+  -ms-flex: 0 0 70%;
+  flex: 0 0 70%;
+  max-width: 70%;
+}
+
+.col-percent-75 {
+  -ms-flex: 0 0 75%;
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+.col-percent-80 {
+  -ms-flex: 0 0 80%;
+  flex: 0 0 80%;
+  max-width: 80%;
+}
+
+.col-percent-90 {
+  -ms-flex: 0 0 90%;
+  flex: 0 0 90%;
+  max-width: 90%;
+}
+
+.except-first-ml-16 > div {
+
+  margin-left: 16px
+}
+
+.except-first-ml-16 > div:first-child {
+  margin-left: 0px !important;
+}
+
+.text-black {
+  color: #000000 ;
+}
+
+.video-header {
+  max-height: 72px;
+
+  .icon-nav {
+    margin-bottom: 12px !important;
+    margin-top: 12px !important;
+
+    a {
+      color: #000000;
+    }
+
+    li {
+      min-width: 26px;
+      max-height: 48px;
+      padding-left: 15px;
+      padding-right: 15px;
+
+    }
+
+    li:last-child {
+      padding-right: 40px;
+    }
+
+    i {
+      font-size: 24px;
+      display: block;
+      width: 24px;
+      height: 24px;
+      margin: 0 auto;
+      margin-bottom: 6px;
+    }
+
+    p {
+      font-size: 12px;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+}
+
+.nav-background {
+  background: #f7f7f7;
+
+  .nav-scroller {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .08);
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .08);
+  margin-bottom: 24px;
+}
+
+.zf-carousel-caption {
+  bottom: 0px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+
+  p {
+    margin: 0px !important;
+    font-size: 20px;
+  }
+}
+
+.video-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease, -webkit-transform .3s ease
+}
+
+/* 视频小组件开始 */
+.recommend-item:hover {
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2)
+}
+
+.recommend-item:hover .recommend-mask {
+  display: block
+}
+
+.recommend-item:hover .recommend-title {
+  display: none
+}
+
+.recommend-mask:hover .recommend-info {
+  -webkit-transform: translateY(0);
+  transform: translateY(0)
+}
+
+.recommend-info {
+  width: 100%;
+  height: 96px;
+  position: absolute;
+  bottom: 0;
+  padding: 52px 10px 0;
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+  transition: -webkit-transform .3s ease-in-out;
+  transition: transform .3s ease-in-out;
+  transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+  -webkit-transform: translateY(96px);
+  transform: translateY(96px)
+}
+
+.recommend-item {
+  width: 227px;
+  height: 128px;
+  font-size: 12px;
+
+  p {
+    margin: 0px;
+  }
+
+  .recommend-top {
+    width: 100%;
+    height: 128px;
+    overflow: hidden;
+    position: relative;
+
+
+  }
+
+  .recommend-mask {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .4);
+
+    .recommend-mask-title {
+      padding: 12px 10px 0;
+      width: 100%;
+      height: 52px;
+      line-height: 20px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+  }
+
+  .recommend-title {
+    height: 48px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    line-height: 1;
+    padding: 24px 10px 12px;
+    white-space: nowrap;
+    word-wrap: normal;
+    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, .5)), to(transparent));
+    background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, .5), transparent);
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent);
+  }
+
+}
+
+/* 视频小组件结束 */
+
+/*标题小组件开始*/
+.card-title {
+  line-height: 28px;
+  margin: 24px 0 18px 0;
+  width: 1200px;
+  overflow: hidden;
+
+  .card-title-txt {
+    font-size: 28px;
+    padding: 0 0 0 12px;
+    position: relative
+  }
+
+  .card-title-txt:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -9px;
+    display: block;
+    width: 3px;
+    height: 18px;
+    background: #ff4141;
+    border-radius: 1.5px
+  }
+
+  .card-title-more {
+    font-size: 16px;
+    color: #888;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+  }
+
+  .card-title-more, .flex-column {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex
+  }
+
+  .flex-column {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column
+  }
+
+}
+
+/*标题小组件结束*/
+
+/* 视频小组件2开始 */
+.video-nums {
+  color: #666;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.card-item:hover .card-item-top {
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2)
+}
+
+.card-item:hover .card-bottom-nums {
+  bottom: -28px
+}
+
+.card-item {
+  width: 227px;
+  height: 186px;
+  overflow: hidden;
+
+  .card-item-top {
+    width: 100%;
+    height: 128px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 5px;
+  }
+
+  .card-item-top:hover .video-img {
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08)
+  }
+
+  .card-bottom {
+    height: 58px;
+    padding-top: 10px;
+    width: 100%;
+    position: relative
+  }
+
+  .card-bottom-title {
+    font-size: 100%;
+    margin: 0px;
+    line-height: 20px;
+    height: 40px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2
+  }
+
+  .card-bottom-nums {
+    padding: 0px;
+    margin: 5px 0 0 0;
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    margin-top: 5px;
+    height: 20px;
+    background-color: #fff;
+    width: 100%;
+    -webkit-transition: bottom .3s ease-in-out;
+    transition: bottom .3s ease-in-out
+  }
+}
+
+/* 视频小组件2结束 */
+
+/* 脚部开始 */
+footer {
+  margin-top: 60px;
+
+  .about {
+    font-size: 14px;
+
+    > div {
+      width: 1000px;
+      margin: 0 auto;
+    }
+
+    background: #f2f2f2;
+    height: 190px;
+    padding-top: 65px;
+
+    .about-left {
+      border-right: 1px solid #979797;
+
+      div {
+        width: 33.333%;
+        margin-bottom: 24px;
+      }
+    }
+
+    .about-right {
+      .float-left {
+        width: 120px;
+        text-align: center;
+
+        h5 {
+          font-size: 14px;
+          padding-top: 8px;
+        }
+
+        p {
+          font-size: 12px;
+          padding-top: 8px;
+          margin: 0px;
+        }
+      }
+
+      padding-left: 65px;
+
+      img {
+        width: 72px;
+        height: 72px;
+        vertical-align: middle;
+        margin-left: 20px;
+      }
+    }
+
+  }
+
+  .copyright {
+    height: 52px;
+    background: #444444;
+    line-height: 52px;
+    font-size: 12px;
+  }
+}
+
+/* 脚部结束 */
+/*
+ *公共样式结束
+ */
+
+/* 视频首页  */
+.video-index {
+  header {
+    h2 {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* 视频详情页 */
+.video-show {
+  .show-content {
+    padding-right: 20px;
+  }
+
+  .video-info {
+    .videoinfo-title {
+      margin-top: 16px;
+      font-size: 22px;
+    }
+  }
+
+  .videoinfo-text {
+    overflow: hidden;
+    margin-top: 22px;
+    font-size: 14px;
+  }
+
+  .author {
+    overflow: hidden;
+    padding: 24px 0 24px 0;
+    border-bottom: 1px solid #ebebeb;
+
+    .author-main {
+      > a {
+        display: block;
+        width: 54px;
+        height: 54px;
+      }
+    }
+
+    .author-detail {
+      .tag-1 {
+        font-size: 18px;
+        margin: 0px;
+      }
+    }
+
+    .author-follow {
+      margin-top: 15px;
+    }
+  }
+}
+
+.vjs-big-play-button {
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  margin: auto;
+}
