@@ -232,7 +232,7 @@
         cols: [[
           {width: 50,  type: "numbers", fixed: "left"},
           {width: 50,  field: "id",          title: "ID"},
-          {width: 120,                       title: "名称" , templet: function (d) {var str = '-----'; return str.repeat(d.level) + d.name }},
+          {minWidth: 120,                       title: "名称" , templet: function (d) {var str = '-----'; return str.repeat(d.level) + d.name }},
           {            field: "description", title: "描述"},
           {width: 80,  field: "parent_id",   title: "父类"},
           {width: 80,  field: "level",       title: "级别"},

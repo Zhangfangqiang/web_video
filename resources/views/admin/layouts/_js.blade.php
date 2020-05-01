@@ -142,6 +142,52 @@
       })
     }
 
+    /**
+     * 全局导航菜单parent_id
+     */
+    if ($(".nav-menus-parent-id").length > 0) {
+      $(".nav-menus-parent-id").each(function (index, item) {
+
+        var nav_id = getQueryVariable('nav_id');
+
+        xmSelect.render({
+          el: item,
+          name: 'parent_id',
+          radio: true,
+          filterable: true,
+          remoteSearch: true,
+          remoteMethod: function (val, cb, show) {
+            $.ajax({
+              url: '{{route('api.admin.v1.nav_menus.index')}}?nav_id=' + nav_id,
+              data: {
+                otherWhere: [
+                  ['name', 'like', '%' + val + '%']
+                ],
+                tree: 1,
+                offset: 0,
+                limit: 100,
+              },
+              type: 'GET',
+              dataType: 'json',
+              success: function (data) {
+
+                var AfteData = [];
+
+                data.data.forEach(function (item, index) {
+                  var str = '----'
+                  AfteData.push({name: str.repeat(item.level) + item.name, value: item.id})
+                })
+
+                cb(AfteData);
+              }
+            })
+          }
+        })
+      })
+    }
+
+
+
   });
 </script>
 

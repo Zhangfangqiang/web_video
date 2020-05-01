@@ -61,7 +61,13 @@ trait GetPublicData
 
         #排序
         if (isset($configArray['order']) && !empty($configArray['order'])) {
-            $data = $data->orderBy($configArray['order'][0], $configArray['order'][1]);
+            if (is_array($configArray['order'][0])) {
+                foreach ($configArray['order'] as $key => $value){
+                    $data = $data->orderBy(...$value);
+                }
+            } else {
+                $data = $data->orderBy(...$configArray['order']);
+            }
         }
 
         #分段
@@ -86,7 +92,12 @@ trait GetPublicData
     {
         if (isset($configArray['tree']) && !empty($configArray['tree'])) {
             $configArray['select'] = \DB::raw(" * , concat(path,',',id) AS paths");
-            $configArray['order']  = ['paths', 'asc'];
+
+            if (isset($configArray['order']) && !empty($configArray['order'])) {
+                $configArray['order'] = [$configArray['order'],[ 'paths', 'asc']];
+            }else{
+                $configArray['order'] = ['paths', 'asc'];
+            }
         }
 
         return $configArray;

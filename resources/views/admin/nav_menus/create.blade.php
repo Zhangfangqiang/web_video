@@ -2,7 +2,11 @@
 
 {{--后置css样式开始--}}
 @section('after_css')
-
+  <style>
+    .zf-select {
+      border: solid 1px #5FB878;
+    }
+  </style>
 @endsection
 {{--后置css样式结束--}}
 
@@ -11,15 +15,13 @@
 
     <div class="layui-form-item">
       <label class="layui-form-label">父类:</label>
-      <div class="layui-input-block">
-        <input type="number" name="parent_id" value="" class="layui-input">
-      </div>
+      <div class="layui-input-block nav-menus-parent-id"></div>
     </div>
 
     <div class="layui-form-item">
       <label class="layui-form-label">状态:</label>
       <div class="layui-input-block">
-        <input type="checkbox" name="status" lay-skin="switch" checked lay-text="启用|关闭">
+        <input type="checkbox" name="status" lay-skin="switch" checked lay-text="启用|关闭" value="1">
       </div>
     </div>
 
@@ -41,16 +43,20 @@
       <label class="layui-form-label">打开方式:</label>
       <div class="layui-input-block">
         <select name="target" id="" class="layui-input">
-          <option value="_self">自身窗口打开</option>
           <option value="_blank">新建窗口打开</option>
+          <option value="_self">自身窗口打开</option>
         </select>
       </div>
     </div>
 
     <div class="layui-form-item">
-      <label class="layui-form-label">链接:</label>
+      <label class="layui-form-label">链接:
+      </label>
       <div class="layui-input-block">
-        <input type="text" name="url" value="" class="layui-input">
+        <p style="color: red;font-size: 8px;">(根据分类or自定义)生成链接</p>
+        <input  name="url_type" type="text"  id="url-type" value="1" hidden>
+        <input  name="url"      type="text"  id="url-type-1" value=""   class="layui-input" style="width: 48%;float: right;">
+        <div class="category-id-form-re" style="width: 48%;float: left;"></div>
       </div>
     </div>
 
@@ -77,7 +83,69 @@
       var upload = layui.upload;
       var nav_id = getQueryVariable('nav_id');
 
+      //给表单nav_id赋值
       $('#nav_id').val(nav_id)
+
+      $("#url-type-1").click(function () {
+        checkChange(1);
+      });
+
+      /**
+       * 渲染内容的分类
+       */
+      if ($(".category-id-form-re").length > 0) {
+        $(".category-id-form-re").each(function (index, item) {
+          xmSelect.render({
+            el: item,
+            name: 'c_id',
+            radio: true,
+            filterable: true,
+            remoteSearch: true,
+            on:function(){
+              checkChange(2)
+            },
+            remoteMethod: function (val, cb, show) {
+              $.ajax({
+                url: '{{route('api.admin.v1.categories.index')}}',
+                data: {
+                  otherWhere: [
+                    ['name', 'like', '%' + val + '%']
+                  ],
+                  tree: 1,
+                  offset: 0,
+                  limit: 100,
+                },
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+
+                  var AfteData = [];
+
+                  data.data.forEach(function (item, index) {
+                    var str = '----'
+                    AfteData.push({name: str.repeat(item.level) + item.name, value: item.id})
+                  })
+
+                  cb(AfteData);
+                }
+              })
+            }
+          })
+
+        })
+      }
+
+      function checkChange(i) {
+        $('#url-type').val(i)
+
+        if (i == 1) {
+          $("#url-type-1").addClass('zf-select')
+          $(".category-id-form-re").removeClass('zf-select')
+        }else{
+          $(".category-id-form-re").addClass('zf-select')
+          $("#url-type-1").removeClass('zf-select')
+        }
+      }
     })
   </script>
 @endsection

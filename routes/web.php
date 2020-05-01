@@ -20,7 +20,7 @@ Route::redirect('/', '/web/contents/index');
 #前端路由
 Route::prefix('web')->name('web.')->namespace('Web')->group(function () {
 
-    Route::get  ('/contents/index'    , 'ContentsController@index') ->name('contents.index');           #内容首页
+    Route::get  ('/contents/index/{category?}'    , 'ContentsController@index') ->name('contents.index');           #内容首页
 
     #登录 && 邮件认证 后可以访问的地址
     Route::group(['middleware' => ['auth', 'verified']], function () {

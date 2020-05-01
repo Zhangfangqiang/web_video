@@ -25,6 +25,7 @@ class CreateNavMenusTable extends Migration
             $table->unsignedBigInteger('list_order')->nullable()->default(1000)->comment('排序');
             $table->string('name')->comment('导航名称');
             $table->string('target')->nullable()->default('_blank')->comment('打开方式');
+            $table->tinyInteger('url_type')->nullable()->default(1)->comment('url类型 1自定义 2根据分类生成');
             $table->string('url')->comment('打开链接');
             $table->string('icon')->nullable()->default('')->comment('图标');
             $table->timestamps();

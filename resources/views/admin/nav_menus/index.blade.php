@@ -251,6 +251,10 @@
       table.render({
         elem: "#nav_menus-table",
         url: "{{route('api.admin.v1.nav_menus.index')}}",
+        where :{
+          otherWhere: [['nav_id', '=', nav_id]],
+          tree:1
+        },
         request: {
           limitName: 'paginate'
         },
@@ -265,12 +269,13 @@
         cols: [[
           {width: 50, type: "numbers", fixed: "left"},
           {width: 70, field: "id", title: "id"},
-          {minWidth: 170, field: "name", title: "名称"},
+          {minWidth: 120,                       title: "名称" , templet: function (d) {var str = '|-----'; return str.repeat(d.level) + d.name }},
           {width: 70, field: "level", title: "级别"},
           {width: 100, field: "path", title: "路径"},
-          {width: 70, field: "status", title: "状态"},
+          {width: 70,  title: "状态" ,templet:'<div>@{{# if(d.status == 1){ }}开启 @{{# }else{ }} 关闭 @{{# } }}</div>'},
           {width: 70, field: "list_order", title: "排序"},
           {width: 100, field: "target", title: "打开方式"},
+          {width: 100,                  title: "链接类型" , templet:'<div> @{{# if(d.url_type == 1){ }} 自定义 @{{# }else{ }} 分类生成 @{{# } }}</div>'},
           {minWidth: 170, field: "url", title: "链接"},
           {width: 100, field: "icon", title: "icon图标"},
           {width: 170, field: "created_at", title: "创建时间"},

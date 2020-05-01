@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Models\User;
+use App\Models\Category;
 use App\Models\Content;
 use Illuminate\Http\Request;
 use App\Http\Requests\Web\ContentRequest;
@@ -15,8 +15,12 @@ class ContentsController extends Controller
      * @param ContentRequest $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(ContentRequest $request)
+    public function index(ContentRequest $request , Category $category)
     {
+        if (!is_null($category->id)){
+            return view(env('VIEWLAYER').'.contents.index_category', compact('request'));
+        }
+
         return view(env('VIEWLAYER').'.contents.index', compact('request'));
     }
 

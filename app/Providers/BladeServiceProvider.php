@@ -121,6 +121,7 @@ class BladeServiceProvider extends ServiceProvider
         Blade::directive('link', function () {
             return "<?php
                 \$links = new App\Models\Link ;
+                /* getAllDate有缓存功能 */
                 \$links = \$links->getAllDate();
             ?>
             ";
@@ -132,5 +133,39 @@ class BladeServiceProvider extends ServiceProvider
         Blade::directive('endlink' ,function (){
             return '';
         });
+
+
+        /**
+         * 获取分类数据标签
+         */
+        Blade::directive('navmenu', function ($expression) {
+
+
+            if (empty($expression)){
+                return "<?php
+                    \$navs = new App\Models\Nav;
+                    \$navs = \$navs->where('is_main',1)->first();
+                    \$selfConfig['otherWhere'][] = ['nav_id' , '=' , \$navs->id ];
+                    \$selfConfig['tree'] = true;
+                    \$selfConfig['order'] = ['list_order','asc'];
+                    \$navMenus = new App\Models\NavMenu;
+                    \$navMenus = \$navMenus->getData(\$selfConfig);
+                    \$navMenus = \$navMenus->nest()
+                ?>";
+            }else{
+                return "<?php
+                    \$navMenus = new App\Models\NavMenu;
+                    \$navMenus = \$navMenus->getData(" . $expression . ");
+                ?>";
+            }
+        });
+        /**
+         * 获取分类数据标签
+         * 这个可以没有但是我就是要好看的双标签 -_-!
+         */
+        Blade::directive('endnavmenu' ,function (){
+            return '';
+        });
+
     }
 }

@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use TypiCMS\NestableTrait;
 use App\Models\Traits\GetPublicData;
 use Illuminate\Database\Eloquent\Model;
 
 class NavMenu extends Model
 {
-    use GetPublicData;
+    use GetPublicData,NestableTrait;
 
     /**
      * 将这个模型绑定到指定的表中
@@ -19,7 +20,7 @@ class NavMenu extends Model
      * 设计可填充的字段
      * @var array
      */
-    protected $fillable = ['name', 'target', 'parent_id', 'level', 'path', 'icon', 'status', 'url', 'nav_id'];
+    protected $fillable = ['name', 'target','c_id', 'list_order', 'url_type','parent_id', 'level', 'path', 'icon', 'status', 'url', 'nav_id'];
 
     /**
      * 数据关联一对一,找父类
@@ -72,6 +73,18 @@ class NavMenu extends Model
 
         $bread[]  = ['name'=>$this->name ,'url' => route('web.list.article-list', ['nav_menu' => $url])];
         return $bread;
+    }
+
+    /**
+     * 返回url中的c_id
+     * @return mixed|string
+     */
+    public function getCidAttribute()
+    {
+        if ($this->url_type == 2) {
+            $paresUrl = parse_url($this->url);
+            return explode('/', $paresUrl['path'])[4];
+        }
     }
 
 }

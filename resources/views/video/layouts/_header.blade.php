@@ -85,13 +85,11 @@
 <div class="nav-background">
   <div class="nav-scroller container">
     <nav class="nav d-flex justify-content-between">
-      {{--分类标签循环开始--}}
-      @category
-      @foreach($categories as $key => $value)
-        <a class="text-decoration-none text-black" href="#">{{$value->name}}</a>
+      @navmenu
+      @foreach($navMenus as $key => $value)
+        <a class="text-decoration-none text-black" href="{{$value->url}}">{{$value->name}}</a>
       @endforeach
-      @endcategory
-      {{--分类标签循环结束--}}
+      @endnavmenu
     </nav>
   </div>
 </div>
