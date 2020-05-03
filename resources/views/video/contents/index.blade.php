@@ -12,23 +12,34 @@
   <!--中间内容开始-->
   <div class="container  video-index">
 
+    {{--推荐内容开始--}}
     <div class="row no-gutters">
+      {{--轮播图内容开始--}}
       <div class="col-percent-40 rounded-lg-lg zfpr-8">
         <div id="carouselExampleCaptions" class="carousel slide rounded-lg" data-ride="carousel">
           <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="{{asset('/web/img/l1.jpg')}}" class="d-block w-100 rounded-lg" alt="...">
-              <div class="carousel-caption zf-carousel-caption d-none d-md-block">
-                <p>11111111111111111111</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="{{asset('/web/img/l2.jpg')}}" class="d-block w-100 rounded-lg" alt="...">
-              <div class="carousel-caption zf-carousel-caption d-none d-md-block">
-                <p>111111111111111111111</p>
-              </div>
-            </div>
+            @php
+              $config = [
+                'order' => ['created_at','desc'],
+                'offset'=> 0,
+                'limit' => 5
+              ];
+            @endphp
+            @content($config)
+            @foreach($contents as $key => $value)
+              <a href="{{ $value->link() }}" target="_blank">
+                <div class="carousel-item @if($loop->first) active @endif">
+                  <img src="{{imgRe($value->img , 472 ,265)}}" class="d-block w-100 rounded-lg" alt="">
+                  <div class="carousel-caption zf-carousel-caption d-none d-md-block">
+                    <p>{{$value->title}}</p>
+                  </div>
+                </div>
+              </a>
+            @endforeach
+            @endcontent
           </div>
+
+          {{--轮播图左右切换开始--}}
           <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -37,173 +48,55 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
+          {{--轮播图左右切换结束--}}
         </div>
       </div>
+      {{--轮播图内容结束--}}
+
+      {{--轮播右侧列表开始--}}
       <div class="col-percent-60 zfpl-8 d-flex flex-wrap justify-content-between align-content-between">
-        <div class="float-left recommend-item">
-          <a href='' target="_blank">
-            <div class="recommend-top skeleton">
-              <picture>
-                <img class="video-img rounded-lg"
-                     src="https://pic.rmb.bdstatic.com/be4d8290d9f6842178374d4eb47c639d.jpeg@s_2,w_454,h_256,q_100">
-              </picture>
-              <div class="recommend-mask">
-                <p class="recommend-mask-title text-white  overflow-hidden ">林延秋7-2测评，教牛头滚破解对方屏风马，棋友直呼惊呆</p>
-                <div class="recommend-info">
-                  <p class="text-white">楚河汉界说象棋</p>
-                  <p class="text-white">
-                  <span class="float-left">
-                    <i class="iconfont iconplay"></i>
-                    <span>6万</span>
-                  </span>
-                    <span class="float-left pl-5">
-                    <i class="iconfont iconcomments"></i>
-                    <span>86</span>
-                  </span>
-                  </p>
+        @php
+          $config = [
+            'order' => ['created_at','desc'],
+            'offset'=> 5,
+            'limit' => 6
+          ];
+        @endphp
+        @content($config)
+        @foreach($contents as $key => $value)
+          <div class="float-left recommend-item">
+            <a href='{{ $value->link() }}' target="_blank">
+              <div class="recommend-top skeleton">
+                <picture>
+                  <img class="video-img rounded-lg" src="{{$value->img}}">
+                </picture>
+                <div class="recommend-mask">
+                  <p class="recommend-mask-title text-white  overflow-hidden ">{{$value->title}}</p>
+                  <div class="recommend-info">
+                    <p class="text-white">{{$value->title}}</p>
+                    <p class="text-white">
+                      <span class="float-left">
+                        <i class="iconfont iconplay"></i>
+                        <span>{{$value->watch_count}}</span>
+                      </span>
+                      <span class="float-left pl-5">
+                        <i class="iconfont iconcomments"></i>
+                        <span>{{$value->comment_count}}</span>
+                      </span>
+                    </p>
+                  </div>
                 </div>
+                <div class="recommend-title text-truncate text-white">{{$value->title}}</div>
               </div>
-              <div class="recommend-title text-truncate text-white">林延秋7-2测评，教大家牛头滚破解对方屏风马，棋友直呼惊呆</div>
-            </div>
-          </a>
-        </div>
-        <div class="float-left recommend-item">
-          <a href='' target="_blank">
-            <div class="recommend-top skeleton">
-              <picture>
-                <img class="video-img rounded-lg"
-                     src="https://pic.rmb.bdstatic.com/be4d8290d9f6842178374d4eb47c639d.jpeg@s_2,w_454,h_256,q_100">
-              </picture>
-              <div class="recommend-mask">
-                <p class="recommend-mask-title text-white  overflow-hidden ">林延秋7-2测评，教牛头滚破解对方屏风马，棋友直呼惊呆</p>
-                <div class="recommend-info">
-                  <p class="text-white">楚河汉界说象棋</p>
-                  <p class="text-white">
-                  <span class="float-left">
-                    <i class="iconfont iconplay"></i>
-                    <span>6万</span>
-                  </span>
-                    <span class="float-left pl-5">
-                    <i class="iconfont iconcomments"></i>
-                    <span>86</span>
-                  </span>
-                  </p>
-                </div>
-              </div>
-              <div class="recommend-title text-truncate text-white">林延秋7-2测评，教大家牛头滚破解对方屏风马，棋友直呼惊呆</div>
-            </div>
-          </a>
-        </div>
-        <div class="float-left recommend-item">
-          <a href='' target="_blank">
-            <div class="recommend-top skeleton">
-              <picture>
-                <img class="video-img rounded-lg"
-                     src="https://pic.rmb.bdstatic.com/be4d8290d9f6842178374d4eb47c639d.jpeg@s_2,w_454,h_256,q_100">
-              </picture>
-              <div class="recommend-mask">
-                <p class="recommend-mask-title text-white  overflow-hidden ">林延秋7-2测评，教牛头滚破解对方屏风马，棋友直呼惊呆</p>
-                <div class="recommend-info">
-                  <p class="text-white">楚河汉界说象棋</p>
-                  <p class="text-white">
-                  <span class="float-left">
-                    <i class="iconfont iconplay"></i>
-                    <span>6万</span>
-                  </span>
-                    <span class="float-left pl-5">
-                    <i class="iconfont iconcomments"></i>
-                    <span>86</span>
-                  </span>
-                  </p>
-                </div>
-              </div>
-              <div class="recommend-title text-truncate text-white">林延秋7-2测评，教大家牛头滚破解对方屏风马，棋友直呼惊呆</div>
-            </div>
-          </a>
-        </div>
-        <div class="float-left recommend-item">
-          <a href='' target="_blank">
-            <div class="recommend-top skeleton">
-              <picture>
-                <img class="video-img rounded-lg"
-                     src="https://pic.rmb.bdstatic.com/be4d8290d9f6842178374d4eb47c639d.jpeg@s_2,w_454,h_256,q_100">
-              </picture>
-              <div class="recommend-mask">
-                <p class="recommend-mask-title text-white  overflow-hidden ">林延秋7-2测评，教牛头滚破解对方屏风马，棋友直呼惊呆</p>
-                <div class="recommend-info">
-                  <p class="text-white">楚河汉界说象棋</p>
-                  <p class="text-white">
-                  <span class="float-left">
-                    <i class="iconfont iconplay"></i>
-                    <span>6万</span>
-                  </span>
-                    <span class="float-left pl-5">
-                    <i class="iconfont iconcomments"></i>
-                    <span>86</span>
-                  </span>
-                  </p>
-                </div>
-              </div>
-              <div class="recommend-title text-truncate text-white">林延秋7-2测评，教大家牛头滚破解对方屏风马，棋友直呼惊呆</div>
-            </div>
-          </a>
-        </div>
-        <div class="float-left recommend-item">
-          <a href='' target="_blank">
-            <div class="recommend-top skeleton">
-              <picture>
-                <img class="video-img rounded-lg"
-                     src="https://pic.rmb.bdstatic.com/be4d8290d9f6842178374d4eb47c639d.jpeg@s_2,w_454,h_256,q_100">
-              </picture>
-              <div class="recommend-mask">
-                <p class="recommend-mask-title text-white  overflow-hidden ">林延秋7-2测评，教牛头滚破解对方屏风马，棋友直呼惊呆</p>
-                <div class="recommend-info">
-                  <p class="text-white">楚河汉界说象棋</p>
-                  <p class="text-white">
-                  <span class="float-left">
-                    <i class="iconfont iconplay"></i>
-                    <span>6万</span>
-                  </span>
-                    <span class="float-left pl-5">
-                    <i class="iconfont iconcomments"></i>
-                    <span>86</span>
-                  </span>
-                  </p>
-                </div>
-              </div>
-              <div class="recommend-title text-truncate text-white">林延秋7-2测评，教大家牛头滚破解对方屏风马，棋友直呼惊呆</div>
-            </div>
-          </a>
-        </div>
-        <div class="float-left recommend-item">
-          <a href='' target="_blank">
-            <div class="recommend-top skeleton">
-              <picture>
-                <img class="video-img rounded-lg"
-                     src="https://pic.rmb.bdstatic.com/be4d8290d9f6842178374d4eb47c639d.jpeg@s_2,w_454,h_256,q_100">
-              </picture>
-              <div class="recommend-mask">
-                <p class="recommend-mask-title text-white  overflow-hidden ">林延秋7-2测评，教牛头滚破解对方屏风马，棋友直呼惊呆</p>
-                <div class="recommend-info">
-                  <p class="text-white">楚河汉界说象棋</p>
-                  <p class="text-white">
-                  <span class="float-left">
-                    <i class="iconfont iconplay"></i>
-                    <span>6万</span>
-                  </span>
-                    <span class="float-left pl-5">
-                    <i class="iconfont iconcomments"></i>
-                    <span>86</span>
-                  </span>
-                  </p>
-                </div>
-              </div>
-              <div class="recommend-title text-truncate text-white">林延秋7-2测评，教大家牛头滚破解对方屏风马，棋友直呼惊呆</div>
-            </div>
-          </a>
-        </div>
+            </a>
+          </div>
+        @endforeach
+        @endcontent
       </div>
+      {{--轮播右侧列表结束--}}
+
     </div>
+    {{--推荐内容结束--}}
 
     {{--分类循环开始--}}
     @category
@@ -214,8 +107,8 @@
       @if (count($contents))
         <div>
           <h3 class="card-title">
-            <a class="float-left card-title-txt text-black" href="/tab/yingshi">{{$value->name}}</a>
-            <a href="/tab/yingshi" class="card-title-more float-right text-decoration-none">
+            <a class="float-left card-title-txt text-black" href="{{route('web.contents.index',['category' => $value->id ])}}">{{$value->name}}</a>
+            <a href="{{route('web.contents.index',['category' => $value->id ])}}" class="card-title-more float-right text-decoration-none">
               更多
               <i class="iconfont iconarrow-right"></i>
             </a>

@@ -7,7 +7,7 @@
   {{--head标签内容结束--}}
 
 </head>
-<body >
+<body  class="{{ route_class() }}-page">
 
 {{--头部内容开始--}}
 @yield('header',View::make(env('VIEWLAYER').'.layouts._header'))

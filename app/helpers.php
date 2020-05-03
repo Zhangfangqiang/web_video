@@ -115,7 +115,11 @@ if (!function_exists('findChildren')) {
             $ids = explode(',', $ids);
         }
 
-        $children_category_ids = App\Models\Category::whereIn('parent_id', $ids)->get()->pluck('id')->toArray();
+        if (is_array($ids)) {
+            $children_category_ids = App\Models\Category::whereIn('parent_id', $ids)->get()->pluck('id')->toArray();
+        }else{
+            $children_category_ids = App\Models\Category::where('parent_id', $ids)->get()->pluck('id')->toArray();
+        }
 
         if (count($children_category_ids) > 0) {
             if (is_array($ids)) {
@@ -124,7 +128,7 @@ if (!function_exists('findChildren')) {
                 return $children_category_ids[] = $ids;
             }
         } else {
-            return $ids;
+            return [$ids];
         }
     }
 }

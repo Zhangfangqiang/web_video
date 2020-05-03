@@ -146,6 +146,7 @@ class BladeServiceProvider extends ServiceProvider
                     \$navs = new App\Models\Nav;
                     \$navs = \$navs->where('is_main',1)->first();
                     \$selfConfig['otherWhere'][] = ['nav_id' , '=' , \$navs->id ];
+                    \$selfConfig['otherWhere'][] = ['status' , '=' , 1 ];
                     \$selfConfig['tree'] = true;
                     \$selfConfig['order'] = ['list_order','asc'];
                     \$navMenus = new App\Models\NavMenu;

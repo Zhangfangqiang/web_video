@@ -10,10 +10,41 @@
 /* Bootstrap */
 @import '~bootstrap/scss/bootstrap';
 
+.register-page , .login-page , .password-request-page , .verification-notice-page , .password-reset-page{
+  img.captcha {
+    cursor: pointer;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    float: right;
+  }
+  #captcha {
+    width: 120px;
+    float: left;
+  }
+  .nav-background{
+    margin-bottom:0px;
+  }
+  footer{
+    margin-top:0px ;
+  }
+  .zf-bg{
+    >.container{
+      >.row{
+        min-height: 65vh;
+        >div{
+          margin-top:100px;
+        }
+      }
+    }
+    background: url("/web/img/bg1.jpg");
+  }
+}
+
 /* 普遍样式 */
 body {
   font-family: Helvetica, "Microsoft YaHei", Arial, sans-serif;
   font-size: 14px;
+  min-height: 100vh;
 }
 
 /*

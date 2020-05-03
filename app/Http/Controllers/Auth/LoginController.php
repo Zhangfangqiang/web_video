@@ -94,4 +94,14 @@ class LoginController extends Controller
     {
         session()->flash('success','退出成功');
     }
+
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        return view(env('VIEWLAYER') . '.auth.login');
+    }
 }

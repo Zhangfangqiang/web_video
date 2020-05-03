@@ -18,7 +18,7 @@ class ContentsController extends Controller
     public function index(ContentRequest $request , Category $category)
     {
         if (!is_null($category->id)){
-            return view(env('VIEWLAYER').'.contents.index_category', compact('request'));
+            return view(env('VIEWLAYER').'.contents.index_category', compact('request','category'));
         }
 
         return view(env('VIEWLAYER').'.contents.index', compact('request'));
