@@ -17,9 +17,12 @@ $ cp .env.example .env                                #新建.env文件
 ```
 
 ```shell script
-$ php artisan key:generate                            #应用自身加密
-$ php artisan migrate                                 #数据库迁移
-$ npm install                                         #npm 插件安装
-$ npm run dev                                         #运行编译scss
-$ php artisan db:seed                                 #数据播种 
+$ php artisan key:generate                                              #应用自身加密
+$ php artisan jwt:secret                                                #jwt 令牌  
+$ php artisan aetherupload:groups                                       #生成大文件上传的目录
+ln -s <project-path>/storage/app/uploads/ <project-path>/public/        #创建连接文件
+$ php artisan migrate                                                   #数据库迁移
+$ npm install                                                           #npm 插件安装
+$ npm run dev                                                           #运行编译scss
+$ php artisan db:seed                                                   #数据播种 
 ```

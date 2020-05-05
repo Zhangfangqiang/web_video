@@ -29933,7 +29933,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/video.zfajax.com/resources/assets/admin/js/app.js */"./resources/assets/admin/js/app.js");
+module.exports = __webpack_require__(/*! /home/vagrant/video_zfajax_test/resources/assets/admin/js/app.js */"./resources/assets/admin/js/app.js");
 
 
 /***/ })
