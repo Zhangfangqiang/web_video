@@ -278,7 +278,9 @@
 
         //执行重载
         table.reload('contents-table', {
-          where: {'otherWhere': array},
+          where: {
+            'otherWhere': array,
+          },
         });
       });
 
@@ -289,7 +291,8 @@
         elem: "#contents-table",
         url: "{{route('api.admin.v1.contents.index')}}",
         where: {
-          with: ['user','category']
+          with: ['user','category'],
+          order:['created_at','desc'],
         },
         request: {
           limitName: 'paginate'
