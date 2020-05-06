@@ -32,7 +32,7 @@ class ContentObserver
         if(empty($content->seo_key)){
             Jieba::init(['dict' => 'small']);
             Finalseg::init();
-            $content->seo_key = implode(Jieba::cutForSearch(mb_strtolower(strip_tags($content->title))), ',');                                             #添加seo_key
+            $content->seo_key = implode(',', Jieba::cutForSearch(mb_strtolower(strip_tags($content->title))));                                             #添加seo_key
         }
     }
 

@@ -1,5 +1,10 @@
 一个简单的论坛
 
+##需要环境软件
+```shell script
+$ apt-get install ffmpeg                              #linux FFmpeg是领先的多媒体框架，能够解码、编码、转码、mux、demux、流、过滤和播放几乎任何人类和机器创造的东西。
+$ apt-get install supervisor                          #linux 操作系统监视器
+```
 
 ##安装方法
 

@@ -16,6 +16,9 @@
           <dd data-name="operationg_logs" class="layui-this">
             <a lay-href="{{layuiRoute('admin.operationg_logs.index')}}">操作日志</a>
           </dd>
+          <dd data-name="horizon">
+            <a lay-href="{{'/'.config('horizon.path')}}">队列监控</a>
+          </dd>
           <dd data-name="auth">
             <a lay-href="{{layuiRoute('admin.permissions.index')}}">权限管理</a>
           </dd>
